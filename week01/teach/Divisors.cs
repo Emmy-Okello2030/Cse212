@@ -16,9 +16,20 @@ public static class Divisors {
     /// </summary>
     /// <param name="number">The number to find the divisor</param>
     /// <returns>List of divisors</returns>
-    private static List<int> FindDivisors(int number) {
-        List<int> results = new();
-        // TODO problem 1
-        return results;
+    private static List<int> FindDivisors(int number)
+{
+    List<int> results = new();
+
+    // Loop from 1 to number-1
+    for (int i = 1; i < number; i++)
+    {
+        // If i divides number evenly, add it to the list
+        if (number % i == 0)
+        {
+            results.Add(i);
+        }
     }
+
+    return results;
+}
 }

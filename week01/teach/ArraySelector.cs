@@ -9,8 +9,26 @@ public static class ArraySelector
         Console.WriteLine("<int[]>{" + string.Join(", ", intResult) + "}"); // <int[]>{1, 2, 3, 2, 4, 4, 6, 8, 10, 5}
     }
 
-    private static int[] ListSelector(int[] list1, int[] list2, int[] select)
+   private static int[] ListSelector(int[] list1, int[] list2, int[] select)
     {
-        return [];
+        List<int> result = new();
+        int index1 = 0;
+        int index2 = 0;
+
+        foreach (int s in select)
+        {
+            if (s == 1)
+            {
+                result.Add(list1[index1]);
+                index1++;
+            }
+            else if (s == 2)
+            {
+                result.Add(list2[index2]);
+                index2++;
+            }
+        }
+
+        return result.ToArray();
     }
 }
