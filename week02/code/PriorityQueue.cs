@@ -1,4 +1,7 @@
-﻿public class PriorityQueue
+﻿using System;
+using System.Collections.Generic;
+
+public class PriorityQueue
 {
     private List<PriorityItem> _queue = new();
 
@@ -24,14 +27,16 @@
 
         // Find the index of the item with the highest priority to remove
         var highPriorityIndex = 0;
-        for (int index = 1; index < _queue.Count - 1; index++)
+        for (int index = 1; index < _queue.Count; index++) // Fixed: changed _queue.Count - 1 to _queue.Count
         {
-            if (_queue[index].Priority >= _queue[highPriorityIndex].Priority)
+            // Fixed: changed >= to > to maintain FIFO for equal priorities
+            if (_queue[index].Priority > _queue[highPriorityIndex].Priority)
                 highPriorityIndex = index;
         }
 
         // Remove and return the item with the highest priority
         var value = _queue[highPriorityIndex].Value;
+        _queue.RemoveAt(highPriorityIndex); // Fixed: added this line to actually remove the item
         return value;
     }
 
